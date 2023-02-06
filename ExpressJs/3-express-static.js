@@ -8,10 +8,10 @@ const app = express();
 // not like using pervios file
 // if i put index.html in public folder it will automaticly set it for '/' requests in url
 app.use(express.static("./public"));
-
+//for error handeling in wrong url
 app.get("*", (req, res) => {
   console.log(req.url);
-  res.status(404).send("not foound");
+  res.status(404).send("not found");
 });
 
 app.listen(5000, () => {

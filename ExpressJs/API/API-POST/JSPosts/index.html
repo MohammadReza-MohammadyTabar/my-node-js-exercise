@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form">
+      <label for="name"
+        >name
+        <input type="text"  name="name" id="name" />
+      </label>
+      <input type="submit" id="submit" />
+    </form>
+    <div class="result"></div>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+<script >
+  const result=document.querySelector('.result');
+  const fetchData=async()=>{
+    try{
+      const response =await axios.get("/api/people")
+    
+      const people=response.data.map((person)=>{
+      
+        return `<h2>${person.name}</h2>`
+      })
+      
+
+    result.innerHTML=people.join('')
+
+    }catch(err){
+      result.innerHTML=`<div>not fetch ${err}< /div>`;
+
+    }
+
+  }
+  fetchData();
+  const btn=document.querySelector('#submit')
+  const input =document.querySelector('#name');
+  btn.addEventListener('click',async(e)=>{
+    e.preventDefault(); 
+    
+    const val=input.value;
+   
+    try{
+      const {data}=await axios.post('/api/people',{name:val});
+      console.log(data);
+        result.innerHTML=data.map((e)=>`<h2>${e.name}</h2>`).join("")
+    }catch(err){
+      
+      result.innerHTML=`not posted ${err.response.data.msg}`
+    }
+    input.value=''
+  })
+</script>
+  </body>
+</html>
