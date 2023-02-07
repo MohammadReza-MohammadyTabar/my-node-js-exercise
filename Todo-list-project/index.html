@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <ul class="todosList">
+        <h1>ToDos List</h1>
+      </ul>
+
+      <form>
+        <input
+          type="text"
+          name="taskName"
+          id="inputTaskName"
+          placeholder="Enter your task"
+          class="text"
+        />
+        <span id="stat"></span>
+        <br />
+        <input type="submit" class="add" />
+      </form>
+      <button class="remove">remove</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="todo.js"></script>
+  </body>
+</html>
